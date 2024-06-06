@@ -1,22 +1,35 @@
 import './index.css'
 import React from 'react'
-import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
 
+// Configs
+import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+// Pages
 import Home from './pages/Home'
+import Contact from './pages/Contact'
+import Pricing from './pages/Pricing'
+import Admin from './pages/Admin'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
   },
-  // {
-  //   path: '/pokemon/info',
-  //   element: <Pokemon />,
-  // },
+  {
+    path: '/contact',
+    element: <Contact />,
+  },
+  {
+    path: '/pricing',
+    element: <Pricing />,
+  },
+  {
+    path: '/admin',
+    element: <Admin />,
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
