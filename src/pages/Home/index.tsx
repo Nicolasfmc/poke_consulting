@@ -36,10 +36,12 @@ const Home = () => {
           style={{
             display: 'flex',
 
+            height: '450px',
+
             justifyContent: 'center',
             alignItems: 'center',
 
-            height: '450px',
+            flexDirection: 'column',
           }}
         >
           <h1>PokeConsult</h1>
@@ -49,7 +51,7 @@ const Home = () => {
         <main role="about_us & other">
           <ImageTextComponent
             reverse
-            imageUrl=""
+            // imageUrl=""
             title="About Us"
             text={`We are a Brazil-based consultancy dedicated to helping Pokemon trainers excel. 
             Our expertise lies in crafting winning team compositions and providing strategic 
@@ -57,7 +59,7 @@ const Home = () => {
             mastering the art of Pokemon training and strategy.`}
           />
           <ImageTextComponent
-            imageUrl=""
+            // imageUrl=""
             title="Heading"
             text="another subheading"
           />

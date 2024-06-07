@@ -31,9 +31,15 @@ const NavBar = () => {
           alignItems: 'center',
         }}
       >
-        <Button variant="text">Pricing</Button>
-        <Button variant="text">Page</Button>
-        <Button variant="text">Page</Button>
+        <Button variant="text" style={{ color: colors.titleText }}>
+          Pricing
+        </Button>
+        <Button variant="text" style={{ color: colors.titleText }}>
+          Page
+        </Button>
+        <Button variant="text" style={{ color: colors.titleText }}>
+          Page
+        </Button>
         <Button>Sign Up</Button>
       </div>
     </div>

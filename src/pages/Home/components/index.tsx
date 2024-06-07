@@ -2,14 +2,14 @@ import React from 'react'
 import colors from '../../../utils/colors'
 
 interface Props {
-  imageUrl: string
+  imageUrl?: string
   title: string
   text: string
   reverse?: boolean
 }
 
 const ImageTextComponent: React.FC<Props> = ({
-  imageUrl,
+  imageUrl = undefined,
   title,
   text,
   reverse,
@@ -34,13 +34,11 @@ const ImageTextComponent: React.FC<Props> = ({
       flex: 1,
     },
     title: {
-      fontSize: '40px',
       fontWeight: 'semibold',
       marginBottom: '5px',
       color: colors.titleText,
     },
     text: {
-      fontSize: '24px',
       color: colors.subText,
       lineHeight: 1.6,
     },
@@ -49,10 +47,14 @@ const ImageTextComponent: React.FC<Props> = ({
   return (
     <div style={styles.container}>
       <div style={styles.imageContainer}>
-        <img src={imageUrl} alt={title} style={styles.image} />
+        {imageUrl ? (
+          <img src={imageUrl} alt={title} style={styles.image} />
+        ) : (
+          <div style={{ ...styles.image, backgroundColor: '#78B1AD' }} />
+        )}
       </div>
       <div style={styles.textContainer}>
-        <h3 style={styles.title}>{title}</h3>
+        <h2 style={styles.title}>{title}</h2>
         <p style={styles.text}>{text}</p>
       </div>
     </div>
