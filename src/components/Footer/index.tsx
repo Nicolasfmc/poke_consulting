@@ -22,7 +22,7 @@ const Footer = () => {
         style={{
           display: 'flex',
 
-          width: '100%',
+          width: window.innerWidth,
           height: '100px',
 
           justifyContent: 'space-around',
@@ -36,7 +36,7 @@ const Footer = () => {
           style={{
             display: 'flex',
 
-            width: '20px',
+            width: '5%',
 
             justifyContent: 'space-evenly',
             alignItems: 'center',

@@ -10,10 +10,7 @@ const NavBar = () => {
         display: 'flex',
         backgroundColor: colors.background,
 
-        width: '100%',
         height: '164px',
-
-        // minWidth: '1280px',
 
         paddingLeft: '80px',
         paddingRight: '80px',

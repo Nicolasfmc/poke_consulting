@@ -24,8 +24,9 @@ export function useDimension(width: number): boolean {
 
 export const defaultStyle: React.CSSProperties = {
   display: 'flex',
-  width: '100%',
+  width: window.innerWidth,
   padding: '18px',
+  margin: 0,
   flexDirection: 'column',
   backgroundColor: colors.white,
 }

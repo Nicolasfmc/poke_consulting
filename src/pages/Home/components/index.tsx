@@ -18,20 +18,22 @@ const ImageTextComponent: React.FC<Props> = ({
     container: {
       display: 'flex',
       alignItems: 'center',
-      width: window.innerWidth,
-      marginBottom: '20px',
+      width: window.innerWidth * 0.9,
+      marginBottom: '30px',
       flexDirection: reverse ? 'row-reverse' : 'row',
+      justifyContent: 'space-between',
     },
     imageContainer: {
       width: '620px',
       height: '400px',
     },
     image: {
-      width: '100%',
-      height: 'auto',
+      width: '620px',
+      height: '400px',
+      borderRadius: '5px',
     },
     textContainer: {
-      flex: 1,
+      width: '50%',
     },
     title: {
       fontWeight: 'semibold',
