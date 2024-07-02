@@ -2,8 +2,10 @@ import { memo } from 'react'
 import colors from '../../utils/colors'
 import Logo from '../../assets/pokeball_logo.png'
 import Button from '../Button'
+import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
+  const navigation = useNavigate()
   return (
     <div
       style={{
@@ -19,7 +21,14 @@ const NavBar = () => {
         alignItems: 'center',
       }}
     >
-      <img alt="logo" src={Logo} width={'40px'} height={'auto'} />
+      <img
+        alt="logo"
+        src={Logo}
+        width={'40px'}
+        height={'auto'}
+        style={{ cursor: 'pointer' }}
+        onClick={() => navigation('/')}
+      />
       <div
         style={{
           display: 'flex',

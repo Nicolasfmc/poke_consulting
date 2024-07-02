@@ -44,8 +44,23 @@ const Home = () => {
             flexDirection: 'column',
           }}
         >
-          <h1>PokeConsult</h1>
-          <p>Master the art of Pokemon training</p>
+          <p
+            style={{
+              fontSize: '250%',
+              fontWeight: 'bold',
+              margin: 0,
+            }}
+            >
+            PokeConsult
+          </p>
+          <p
+            style={{
+              fontSize: '110%',
+              margin: 0,
+            }}
+          >
+            Master the art of Pokemon training
+          </p>
           <Button onClick={() => navigate('/pricing')}>I Want!</Button>
         </section>
         <main
