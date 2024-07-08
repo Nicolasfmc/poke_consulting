@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import Contact from './pages/Contact'
 import Pricing from './pages/Pricing'
 import Admin from './pages/Admin'
+import Login from './pages/Login'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: '/admin',
     element: <Admin />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
 ])
 

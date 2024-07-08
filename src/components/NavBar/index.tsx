@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import colors from '../../utils/colors'
-import Logo from '../../assets/pokeball_logo.png'
+import Logo from '../../assets/logos/logo_default.png'
 import Button from '../Button'
 import { useNavigate } from 'react-router-dom'
 
@@ -24,7 +24,7 @@ const NavBar = () => {
       <img
         alt="logo"
         src={Logo}
-        width={'40px'}
+        width={'120px'}
         height={'auto'}
         style={{ cursor: 'pointer' }}
         onClick={() => navigation('/')}
@@ -37,16 +37,23 @@ const NavBar = () => {
           alignItems: 'center',
         }}
       >
-        <Button variant="text" style={{ color: colors.titleText }}>
+        <Button
+          variant="text"
+          style={{ color: colors.titleText }}
+          onClick={() => navigation('/pricing')}
+        >
           Pricing
         </Button>
-        <Button variant="text" style={{ color: colors.titleText }}>
-          Page
+        <Button
+          variant="text"
+          style={{ color: colors.titleText }}
+          onClick={() => navigation('/contact')}
+        >
+          Contact
         </Button>
-        <Button variant="text" style={{ color: colors.titleText }}>
-          Page
+        <Button style={{ marginLeft: 5 }} onClick={() => navigation('/login')}>
+          Sign Up
         </Button>
-        <Button>Sign Up</Button>
       </div>
     </div>
   )

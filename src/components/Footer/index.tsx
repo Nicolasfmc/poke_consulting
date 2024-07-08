@@ -13,7 +13,7 @@ const Footer = () => {
         sx={{
           display: 'flex',
 
-          width: '50%',
+          width: '98%',
 
           alignSelf: 'center',
         }}

@@ -11,6 +11,9 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import SchoolIcon from '@mui/icons-material/School'
 import SupportAgentIcon from '@mui/icons-material/SupportAgent'
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm'
+import EvoBanner from '../../assets/images/evo_banner.png'
+import Empresarios from '../../assets/images/empresarios.png'
+import Banner from '../../assets/images/wallpaperpkn.png'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -36,7 +39,7 @@ const Home = () => {
           style={{
             display: 'flex',
 
-            height: '450px',
+            height: '380px',
 
             justifyContent: 'center',
             alignItems: 'center',
@@ -46,17 +49,18 @@ const Home = () => {
         >
           <p
             style={{
-              fontSize: '250%',
+              fontSize: '320%',
               fontWeight: 'bold',
               margin: 0,
             }}
-            >
+          >
             PokeConsult
           </p>
           <p
             style={{
               fontSize: '110%',
-              margin: 0,
+              marginTop: 20,
+              marginBottom: 15,
             }}
           >
             Master the art of Pokemon training
@@ -74,7 +78,7 @@ const Home = () => {
         >
           <ImageTextComponent
             reverse
-            imageUrl="https://htmlcolorcodes.com/assets/images/colors/dark-green-color-solid-background-1920x1080.png"
+            imageUrl={Empresarios}
             title="About Us"
             text={`We are a Brazil-based consultancy dedicated to helping Pokemon trainers excel. 
             Our expertise lies in crafting winning team compositions and providing strategic 
@@ -82,7 +86,7 @@ const Home = () => {
             mastering the art of Pokemon training and strategy.`}
           />
           <ImageTextComponent
-            imageUrl="https://htmlcolorcodes.com/assets/images/colors/dark-green-color-solid-background-1920x1080.png"
+            imageUrl={EvoBanner}
             title="Heading"
             text={`Choosing our consultancy means gaining access to a team of Pokemon experts dedicated to your success.
             We have the best features compared to cost benefit in the entire market.
@@ -94,8 +98,9 @@ const Home = () => {
           role="benefits"
           style={{
             display: 'flex',
+            width: '110%',
             flexDirection: 'column',
-            padding: '20px 0px 30px 0px',
+            padding: '20px 0px 30px 80px',
             marginLeft: '10%',
           }}
         >
@@ -165,27 +170,46 @@ const Home = () => {
           </Grid>
         </div>
       </div>
-      <figure
+      <div
         role="banner_lets_team_together"
         style={{
-          display: 'flex',
-
-          width: window.innerWidth,
+          position: 'relative',
+          width: '100%',
           height: '425px',
-
           margin: 0,
-
+          display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-
-          backgroundColor: '#78B1AD',
         }}
       >
-        <h1>Let&apos;s Team Together</h1>
-        <p>Check our pricing plans and start now your journey to the top</p>
-        <Button onClick={() => navigate('/pricing')}>Let&apos;s Do It!</Button>
-      </figure>
+        <img
+          src={Banner}
+          alt="City"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            color: 'white',
+            textShadow: '0px 0px 8px black',
+          }}
+        >
+          <h1>Let&apos;s Team Together</h1>
+          <p>Check our pricing plans and start now your journey to the top</p>
+          <Button onClick={() => navigate('/pricing')}>
+            Let&apos;s Do It!
+          </Button>
+        </div>
+      </div>
       <Footer />
     </>
   )
