@@ -1,32 +1,32 @@
 import { memo } from 'react'
 import Footer from '../../components/Footer'
-import NavBar from '../../components/NavBar'
-import {
-  Container,
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Divider
-} from '@mui/material'
+import { Container, Box, Typography, TextField, Divider } from '@mui/material'
 import GoogleIcon from '@mui/icons-material/Google'
+import Logo from '../../assets/logos/logo_default.png'
+import Button from '../../components/Button'
 
 const Login = () => {
   return (
     <>
-      <NavBar />
       <Container maxWidth="sm">
         <Box
           display="flex"
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          minHeight="100vh"
+          minHeight="120px"
           bgcolor="#f5f5f5"
+          marginY={10}
           p={3}
           borderRadius={2}
           boxShadow={3}
         >
+          <img
+            src={Logo}
+            alt="logo_login"
+            width={'50%'}
+            style={{ marginBottom: -50 }}
+          />
           <Typography variant="h4" gutterBottom>
             Create an account
           </Typography>
@@ -50,7 +50,7 @@ const Login = () => {
           <Divider sx={{ width: '100%', marginY: 3 }}>or continue with</Divider>
           <Button
             variant="outlined"
-            color="secondary"
+            color="info"
             startIcon={<GoogleIcon />}
             fullWidth
             sx={{ marginBottom: 2 }}
@@ -58,7 +58,9 @@ const Login = () => {
             Google
           </Button>
           <Typography variant="body2" color="textSecondary">
-            By clicking continue, you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>
+            By clicking continue, you agree to our{' '}
+            <a href="/terms">Terms of Service</a> and{' '}
+            <a href="/privacy">Privacy Policy</a>
           </Typography>
         </Box>
       </Container>

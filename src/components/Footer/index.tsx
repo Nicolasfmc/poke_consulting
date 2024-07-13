@@ -14,6 +14,7 @@ const Footer = () => {
           display: 'flex',
 
           width: '98%',
+          height: '100px',
 
           alignSelf: 'center',
         }}

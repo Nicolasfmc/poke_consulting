@@ -14,7 +14,7 @@ export interface ButtonDisprops extends ButtonProps {
   fontSize?: string
   fontWeight?: string
   borderRadius?: string
-  textTransform?: 'uppercase' | 'none'
+  textTransform?: 'uppercase' | 'lowercase' | 'none'
 }
 
 const theme = createTheme({
