@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals'
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 // Pages
 import Home from './pages/Home'
@@ -54,5 +55,7 @@ root.render(
     </QueryClientProvider>
   </React.StrictMode>,
 )
+
+serviceWorkerRegistration.register()
 
 reportWebVitals()

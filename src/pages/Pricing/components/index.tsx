@@ -22,30 +22,48 @@ export const CardPlans = ({ titlePlan, price, features }: Props) => {
     <>
       <Card
         sx={{
-          width: 350,
-          height: '100%',
-          maxHeight: '425px',
+          width: 400,
+          height: '400px',
           borderRadius: 2,
           boxShadow: 3,
           marginX: 5,
         }}
         elevation={2}
       >
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <CardContent sx={{ padding: 3 }}>
+          <Typography
+            sx={{ fontSize: 14, marginBottom: -1.5 }}
+            color="text.secondary"
+          >
             {titlePlan}
           </Typography>
-          <Typography
-            variant="h3"
-            component="div"
-            sx={{ color: colors.titleText }}
+          <div
+            style={{
+              display: 'flex',
+              maxHeight: '45px',
+            }}
           >
-            {formatPrice(price)}
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary">
-            per month
-          </Typography>
-          <List>
+            <h1
+              style={{
+                color: colors.titleText,
+                fontWeight: 'bold',
+              }}
+            >
+              {formatPrice(price)}
+            </h1>
+            <Typography
+              sx={{
+                fontSize: 14,
+                display: 'flex',
+                alignItems: 'flex-end',
+                margin: '0 0 -10px 5px',
+              }}
+              color="text.secondary"
+            >
+              per month
+            </Typography>
+          </div>
+          <List sx={{ marginTop: 1 }}>
             {features.map((f, i) => (
               <ListItem key={i} sx={{ marginY: 1 }}>
                 &#x2022; {f}
@@ -56,7 +74,7 @@ export const CardPlans = ({ titlePlan, price, features }: Props) => {
         <CardActions>
           <Button
             variant="contained"
-            sx={{ color: 'white', margin: '0 auto', width: '80%' }}
+            sx={{ color: 'white', margin: '0 auto', width: '90%', height: 50 }}
             textTransform="lowercase"
           >
             Select

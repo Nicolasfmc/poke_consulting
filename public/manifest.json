@@ -1,0 +1,20 @@
+{
+  "short_name": "PokeConsult",
+  "name": "PokeConsult",
+  "icons": [
+    {
+      "src": "icon_pokeball.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon_pokeball.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#DD2C00",
+  "background_color": "#ffffff"
+}
