@@ -70,7 +70,10 @@ export const UserColumns = ({
     {
       name: 'Deletar',
       cell: (row) => (
-        <Button onClick={() => deleteUserQuery.mutateAsync(row.id)}>
+        <Button
+          onClick={() => deleteUserQuery.mutateAsync(row.id)}
+          disabled={row.ind_inativo === 1}
+        >
           Deletar
         </Button>
       ),
