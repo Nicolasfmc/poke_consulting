@@ -40,6 +40,13 @@ const NavBar = () => {
         <Button
           variant="text"
           style={{ color: colors.titleText }}
+          onClick={() => navigation('/admin')}
+        >
+          Admin
+        </Button>
+        <Button
+          variant="text"
+          style={{ color: colors.titleText }}
           onClick={() => navigation('/pricing')}
         >
           Pricing
