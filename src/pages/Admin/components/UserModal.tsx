@@ -69,6 +69,9 @@ const UserModal: React.FC<any> = ({ isOpen, onRequestClose, user, onSave }) => {
             alignSelf: 'center',
             justifyContent: 'center',
             padding: 1,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
           }}
         >
           <div style={{ display: 'flex' }}>
@@ -79,35 +82,35 @@ const UserModal: React.FC<any> = ({ isOpen, onRequestClose, user, onSave }) => {
             />
           </div>
           <div style={{ display: 'flex' }}>
-            <p>senha</p>
+            <p>Senha</p>
             <input
               value={senha ?? user?.senha}
               onChange={(e) => setSenha(e.target.value)}
             />
           </div>
           <div style={{ display: 'flex' }}>
-            <p>idade</p>
+            <p>Idade</p>
             <input
               value={idade ?? user?.idade}
               onChange={(e) => setIdade(e.target.value)}
             />
           </div>
           <div style={{ display: 'flex' }}>
-            <p>ind Inativo</p>
+            <p>Ind. Inativo</p>
             <input
               value={indInativo ?? user?.ind_inativo}
               onChange={(e) => setIndInativo(e.target.value)}
             />
           </div>
           <div style={{ display: 'flex' }}>
-            <p>ind Admin</p>
+            <p>Ind. Admin</p>
             <input
               value={indAdmin ?? user?.ind_admin}
               onChange={(e) => setIndAdmin(e.target.value)}
             />
           </div>
           <div style={{ display: 'flex' }}>
-            <p>ind Plano</p>
+            <p>Ind. Plano</p>
             <input
               value={indPlano ?? user?.ind_plano}
               onChange={(e) => setIndPlano(e.target.value)}

@@ -3,9 +3,10 @@ import NavBar from '../../components/NavBar'
 import DataTable from 'react-data-table-component'
 import { UserColumns } from './components/user.table'
 import { useMutation, useQuery } from 'react-query'
-import { getAllUsers, updateUser } from '../../services'
+import { getAllUsers, saveTeam, updateUser } from '../../services'
+import { TeamPk, UpdateUserI, UserPk } from '../../services/interfaces'
 import UserModal from './components/UserModal'
-import { UpdateUserI, UserPk } from '../../services/interfaces'
+import TeamModal from './components/TeamModal'
 
 const Admin = () => {
   const allUsers = useQuery('getAllUsers', () => getAllUsers())
@@ -24,6 +25,13 @@ const Admin = () => {
     },
   })
 
+  const saveTeamQuery = useMutation((data: TeamPk[]) => saveTeam(data), {
+    mutationKey: 'saveTeam',
+    onSuccess: () => {
+      // allTeams.refetch()
+    },
+  })
+
   return (
     <>
       <NavBar />
@@ -34,23 +42,18 @@ const Admin = () => {
         subHeaderWrap
         highlightOnHover
       />
-      <div
-        style={{
-          backgroundColor: 'white',
-          width: '30%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <UserModal
-          isOpen={isModalOpen}
-          onSave={updateUserQuery}
-          onRequestClose={() => setIsModalOpen(false)}
-          user={selectedUser}
+      <UserModal
+        isOpen={isModalOpen}
+        onSave={updateUserQuery}
+        onRequestClose={() => setIsModalOpen(false)}
+        user={selectedUser}
         />
-      </div>
+      <TeamModal
+        isOpen={isModalOpen}
+        onSave={saveTeamQuery}
+        onRequestClose={() => setIsModalOpen(false)}
+        team={selectedUser}
+      />
     </>
   )
 }
