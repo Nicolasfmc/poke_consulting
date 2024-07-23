@@ -40,7 +40,7 @@ export interface UpdateUserI {
 }
 
 export interface TeamPk {
-  pokemonId: number
-  idOwner: number
-  pokemonName: string
+  pokemon_id: number
+  id_owner: number
+  pokemon_name: string
 }

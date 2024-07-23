@@ -7,6 +7,7 @@ import {
   deleteTeam,
   getAllUsers,
   getTeam,
+  getUser,
   putRegisterUser,
   saveTeam,
   updateUser,
@@ -21,19 +22,28 @@ import UserModal from './components/UserModal'
 import TeamModal from './components/TeamModal'
 import Button from '../../components/Button'
 import UserNewModal from './components/UserNewModal'
-import { toast } from 'react-toastify'
 import { TeamColumns } from './components/team.table'
-import { Tab, Tabs } from '@mui/material'
+import TeamNewModal from './components/TeamNewModal'
 
 const Admin = () => {
-  const [tab, setTab] = useState<number>(1)
   const allUsers = useQuery('getAllUsers', () => getAllUsers())
   const [isUserEditModalOpen, setModalUserEditOpen] = useState(false)
   const [isUserNewModalOpen, setModalUserNewOpen] = useState(false)
   const [isTeamEditModalOpen, setModalTeamEditOpen] = useState(false)
+  const [isTeamNewModalOpen, setModalTeamNewOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState<UserPk>()
   const [selectedTeam, setSelectedTeam] = useState<TeamPk>()
   const [dataTeam, setDataTeam] = useState<TeamPk[]>([])
+
+  // objetos iniciais
+  useEffect(() => {
+    getTeamQuery.mutateAsync(1)
+  }, [])
+
+  const handleGetTeam = async (row: UserPk) => {
+    setSelectedUser(row)
+    await getTeamQuery.mutateAsync(row.id)
+  }
 
   const handleEdit = (row: UserPk) => {
     setSelectedUser(row)
@@ -42,8 +52,14 @@ const Admin = () => {
 
   const handleEditTeam = (row: TeamPk) => {
     setSelectedTeam(row)
-    setModalUserEditOpen(true)
+    setModalTeamEditOpen(true)
   }
+
+  useQuery('getUserInicial', () => getUser(1), {
+    onSuccess: (r) => {
+      setSelectedUser(r.data[0])
+    },
+  })
 
   const updateUserQuery = useMutation((data: UpdateUserI) => updateUser(data), {
     mutationKey: 'updateUser',
@@ -57,7 +73,7 @@ const Admin = () => {
     {
       mutationKey: 'registerUser',
       onSuccess: () => {
-        toast.success('Usuário registrado com sucesso!')
+        console.log('Usuário registrado com sucesso!')
         allUsers.refetch()
       },
     },
@@ -73,7 +89,9 @@ const Admin = () => {
   const saveTeamQuery = useMutation((data: TeamPk[]) => saveTeam(data), {
     mutationKey: 'saveTeam',
     onSuccess: (r) => {
-      toast.success(r.data.status)
+      console.log(r.data.status)
+      setSelectedTeam(undefined)
+      if (selectedUser) getTeamQuery.mutateAsync(selectedUser?.id)
     },
   })
 
@@ -82,91 +100,71 @@ const Admin = () => {
     {
       mutationKey: 'deleteTeam',
       onSuccess: (r) => {
-        toast.success(r.data.status)
+        console.log(r.data.status)
       },
     },
   )
 
-  const handleGetTeam = async (row: UserPk) => {
-    await getTeamQuery.mutateAsync(row.id)
-    setTab(2)
-  }
-
-  useEffect(() => {
-    getTeamQuery.mutateAsync(1)
-  }, [])
-
-  const ShowTable = () => {
-    switch (tab) {
-      case 1:
-        return (
-          <>
-            <Button
-              style={{ margin: 5 }}
-              onClick={() => setModalUserNewOpen(true)}
-            >
-              Novo Usuário
-            </Button>
-            <DataTable
-              columns={UserColumns({ allUsers, handleEdit })}
-              data={allUsers?.data?.data ?? []}
-              pagination
-              subHeaderWrap
-              highlightOnHover
-              onRowClicked={(r) => handleGetTeam(r)}
-            />
-            <UserModal
-              isOpen={isUserEditModalOpen}
-              onSave={updateUserQuery}
-              onRequestClose={() => setModalUserEditOpen(false)}
-              user={selectedUser}
-            />
-            <UserNewModal
-              isOpen={isUserNewModalOpen}
-              onSave={registerUserQuery}
-              onRequestClose={() => setModalUserNewOpen(false)}
-            />
-          </>
-        )
-      case 2:
-      default:
-        return (
-          <>
-            <Button
-              style={{ margin: 5 }}
-              onClick={() => setModalTeamEditOpen(true)}
-            >
-              Novo Pokémon
-            </Button>
-            <DataTable
-              columns={TeamColumns({
-                deleteTeamQuery,
-                handleEdit: handleEditTeam,
-              })}
-              data={dataTeam ?? []}
-              pagination
-              subHeaderWrap
-              highlightOnHover
-            />
-            <TeamModal
-              isOpen={isTeamEditModalOpen}
-              onSave={saveTeamQuery}
-              onRequestClose={() => setModalTeamEditOpen(false)}
-              team={selectedTeam}
-            />
-          </>
-        )
-    }
-  }
-
   return (
     <>
       <NavBar />
-      <Tabs value={tab - 1}>
-        <Tab label="Usuários" onClick={() => setTab(1)} />
-        <Tab label="Pokémon" onClick={() => setTab(2)} />
-      </Tabs>
-      {ShowTable()}
+      <>
+        <Button style={{ margin: 5 }} onClick={() => setModalUserNewOpen(true)}>
+          Novo Usuário
+        </Button>
+        <DataTable
+          columns={UserColumns({ allUsers, handleEdit })}
+          data={allUsers?.data?.data ?? []}
+          pagination
+          subHeaderWrap
+          highlightOnHover
+          onRowClicked={(r) => handleGetTeam(r)}
+        />
+        <UserModal
+          isOpen={isUserEditModalOpen}
+          onSave={updateUserQuery}
+          onRequestClose={() => setModalUserEditOpen(false)}
+          user={selectedUser}
+        />
+        <UserNewModal
+          isOpen={isUserNewModalOpen}
+          onSave={registerUserQuery}
+          onRequestClose={() => setModalUserNewOpen(false)}
+        />
+      </>
+      <>
+        <div style={{ display: 'flex' }}>
+          <Button
+            style={{ margin: 5 }}
+            onClick={() => setModalTeamNewOpen(true)}
+          >
+            Novo Pokémon
+          </Button>
+          <h5>Dono do time: {selectedUser?.username}</h5>
+        </div>
+        <DataTable
+          columns={TeamColumns({
+            deleteTeamQuery,
+            handleEdit: handleEditTeam,
+          })}
+          data={dataTeam ?? []}
+          pagination
+          subHeaderWrap
+          highlightOnHover
+        />
+        <TeamModal
+          isOpen={isTeamEditModalOpen}
+          onSave={saveTeamQuery}
+          onRequestClose={() => setModalTeamEditOpen(false)}
+          team={selectedTeam}
+        />
+        <TeamNewModal
+          isOpen={isTeamNewModalOpen}
+          onSave={saveTeamQuery}
+          onRequestClose={() => setModalTeamNewOpen(false)}
+          idOwner={selectedUser?.id}
+        />
+      </>
     </>
   )
 }

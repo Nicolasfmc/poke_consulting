@@ -8,13 +8,17 @@ export const TeamColumns = ({
 }: any): TableColumn<TeamPk>[] => {
   const columns: TableColumn<TeamPk>[] = [
     {
+      name: 'ID Dono',
+      selector: (row) => row.id_owner,
+    },
+    {
       name: 'ID Pokémon',
-      selector: (row) => row.pokemonId,
+      selector: (row) => row.pokemon_id,
       sortable: true,
     },
     {
       name: 'Nome Pokémon',
-      selector: (row) => row.pokemonName,
+      selector: (row) => row.pokemon_name,
       sortable: true,
     },
     {
@@ -28,7 +32,7 @@ export const TeamColumns = ({
     {
       name: 'Deletar',
       cell: (row) => (
-        <Button onClick={() => deleteTeamQuery.mutateAsync(row.pokemonId)}>
+        <Button onClick={() => deleteTeamQuery.mutateAsync(row.pokemon_id)}>
           Deletar
         </Button>
       ),

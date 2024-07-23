@@ -15,8 +15,8 @@ export const getAllUsers = async (): Promise<AxiosResponse<UserPk[]>> => {
   return Promise.resolve(response)
 }
 
-export const getUser = async (id: number): Promise<AxiosResponse<UserPk>> => {
-  const response = await axios.get<UserPk>(URL + '/user/get-user', {
+export const getUser = async (id: number): Promise<AxiosResponse<UserPk[]>> => {
+  const response = await axios.get<UserPk[]>(URL + '/user/get-user', {
     params: { id },
   })
   return Promise.resolve(response)

@@ -8,11 +8,13 @@ const TeamModal: React.FC<any> = ({ isOpen, onRequestClose, team, onSave }) => {
 
   const handleSave = () => {
     if (team) {
-      onSave.mutateAsync({
-        idOwner: team.idOwner,
-        pokemonId: parseInt(pokemonId),
-        pokemonName,
-      })
+      onSave.mutateAsync([
+        {
+          idOwner: team.id_owner,
+          pokemonId: parseInt(pokemonId),
+          pokemonName,
+        },
+      ])
     }
     onRequestClose()
     setPokemonId('')
@@ -20,8 +22,8 @@ const TeamModal: React.FC<any> = ({ isOpen, onRequestClose, team, onSave }) => {
   }
 
   useEffect(() => {
-    setPokemonId(team?.pokemonId)
-    setPokemonName(team?.pokemonName)
+    setPokemonId(team?.pokemon_id)
+    setPokemonName(team?.pokemon_name)
   }, [team])
 
   return (
@@ -58,17 +60,17 @@ const TeamModal: React.FC<any> = ({ isOpen, onRequestClose, team, onSave }) => {
             transform: 'translate(80%, 80%)',
           }}
         >
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Pokémon Id</p>
             <input
-              value={pokemonId ?? team?.pokemonId}
+              value={pokemonId ?? team?.pokemon_id}
               onChange={(e) => setPokemonId(e.target.value)}
             />
           </div>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Pokémon Name</p>
             <input
-              value={pokemonName ?? team?.pokemonName}
+              value={pokemonName ?? team?.pokemon_name}
               onChange={(e) => setPokemonName(e.target.value)}
             />
           </div>
