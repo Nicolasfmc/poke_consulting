@@ -55,7 +55,7 @@ const TeamModal: React.FC<any> = ({ isOpen, onRequestClose, team, onSave }) => {
             padding: 1,
             top: '50%',
             left: '50%',
-            transform: 'translate(-50%, -50%)',
+            transform: 'translate(80%, 80%)',
           }}
         >
           <div style={{ display: 'flex' }}>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from '../../../components/Button'
 import { Box, Modal } from '@mui/material'
 
-const UserModal: React.FC<any> = ({ isOpen, onRequestClose, user, onSave }) => {
+const UserNewModal: React.FC<any> = ({ isOpen, onRequestClose, onSave }) => {
   const [username, setUsername] = useState('')
   const [senha, setSenha] = useState('')
   const [idade, setIdade] = useState('')
@@ -11,34 +11,16 @@ const UserModal: React.FC<any> = ({ isOpen, onRequestClose, user, onSave }) => {
   const [indPlano, setIndPlano] = useState('')
 
   const handleSave = () => {
-    if (user) {
-      onSave.mutateAsync({
-        id: user.id,
-        username,
-        senha,
-        idade: parseInt(idade),
-        indInativo: parseInt(indInativo),
-        indAdmin: parseInt(indAdmin),
-        indPlano: parseInt(indPlano),
-      })
-    }
+    onSave.mutateAsync({
+      username,
+      senha,
+      idade: parseInt(idade),
+      indInativo: parseInt(indInativo),
+      indAdmin: parseInt(indAdmin),
+      indPlano: parseInt(indPlano),
+    })
     onRequestClose()
-    setUsername('')
-    setSenha('')
-    setIdade('')
-    setIndInativo('')
-    setIndAdmin('')
-    setIndPlano('')
   }
-
-  useEffect(() => {
-    setUsername(user?.username)
-    setSenha(user?.senha)
-    setIdade(user?.idade)
-    setIndInativo(user?.ind_inativo)
-    setIndAdmin(user?.ind_admin)
-    setIndPlano(user?.ind_plano)
-  }, [user])
 
   return (
     <div
@@ -77,43 +59,49 @@ const UserModal: React.FC<any> = ({ isOpen, onRequestClose, user, onSave }) => {
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Username</p>
             <input
-              value={username ?? user?.username}
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Senha</p>
             <input
-              value={senha ?? user?.senha}
+              value={senha}
               onChange={(e) => setSenha(e.target.value)}
+              required
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Idade</p>
             <input
-              value={idade ?? user?.idade}
+              value={idade}
               onChange={(e) => setIdade(e.target.value)}
+              required
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Ind. Inativo</p>
             <input
-              value={indInativo ?? user?.ind_inativo}
+              value={indInativo}
               onChange={(e) => setIndInativo(e.target.value)}
+              required
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Ind. Admin</p>
             <input
-              value={indAdmin ?? user?.ind_admin}
+              value={indAdmin}
               onChange={(e) => setIndAdmin(e.target.value)}
+              required
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <p>Ind. Plano</p>
             <input
-              value={indPlano ?? user?.ind_plano}
+              value={indPlano}
               onChange={(e) => setIndPlano(e.target.value)}
+              required
             />
           </div>
           <Button onClick={() => handleSave()}>Salvar</Button>
@@ -123,4 +111,4 @@ const UserModal: React.FC<any> = ({ isOpen, onRequestClose, user, onSave }) => {
   )
 }
 
-export default UserModal
+export default UserNewModal

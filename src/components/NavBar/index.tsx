@@ -51,13 +51,13 @@ const NavBar = () => {
         >
           Pricing
         </Button>
-        <Button
+        {/* <Button
           variant="text"
           style={{ color: colors.titleText }}
           onClick={() => navigation('/contact')}
         >
           Contact
-        </Button>
+        </Button> */}
         <Button style={{ marginLeft: 5 }} onClick={() => navigation('/login')}>
           Sign Up
         </Button>
