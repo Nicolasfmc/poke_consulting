@@ -3,9 +3,23 @@ import colors from '../../utils/colors'
 import Logo from '../../assets/logos/logo_default.png'
 import Button from '../Button'
 import { useNavigate } from 'react-router-dom'
+import { isUserLogged, Logout } from '../../utils/functions'
+import { toast } from 'react-toastify'
 
 const NavBar = () => {
   const navigation = useNavigate()
+
+  const handleLogout = () => {
+    try {
+      Logout()
+    } catch (error) {
+      console.log(error)
+    } finally {
+      toast.success('Usuario deslogado com sucesso!')
+      navigation('/')
+    }
+  }
+
   return (
     <div
       style={{
@@ -37,13 +51,17 @@ const NavBar = () => {
           alignItems: 'center',
         }}
       >
-        <Button
-          variant="text"
-          style={{ color: colors.titleText }}
-          onClick={() => navigation('/admin')}
-        >
-          Admin
-        </Button>
+        {isUserLogged() ? (
+          <Button
+            variant="text"
+            style={{ color: colors.titleText }}
+            onClick={() => navigation('/admin')}
+          >
+            Admin
+          </Button>
+        ) : (
+          <></>
+        )}
         <Button
           variant="text"
           style={{ color: colors.titleText }}
@@ -58,9 +76,18 @@ const NavBar = () => {
         >
           Contact
         </Button> */}
-        <Button style={{ marginLeft: 5 }} onClick={() => navigation('/login')}>
-          Sign Up
-        </Button>
+        {isUserLogged() ? (
+          <Button style={{ marginLeft: 5 }} onClick={() => handleLogout()}>
+            Sign Out
+          </Button>
+        ) : (
+          <Button
+            style={{ marginLeft: 5 }}
+            onClick={() => navigation('/login')}
+          >
+            Sign In
+          </Button>
+        )}
       </div>
     </div>
   )

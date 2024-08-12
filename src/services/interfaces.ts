@@ -44,3 +44,12 @@ export interface TeamPk {
   id_owner: number
   pokemon_name: string
 }
+
+export interface LoginI {
+  username: string
+  senha: string
+}
+
+export interface LoginRes {
+  accessToken: string
+}

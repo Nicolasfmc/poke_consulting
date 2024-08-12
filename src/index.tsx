@@ -1,12 +1,14 @@
 import './index.css'
 import React from 'react'
 import reportWebVitals from './reportWebVitals'
+import 'react-toastify/dist/ReactToastify.css'
 
 // Configs
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
+import { ToastContainer } from 'react-toastify'
 
 // Pages
 import Home from './pages/Home'
@@ -14,6 +16,7 @@ import Contact from './pages/Contact'
 import Pricing from './pages/Pricing'
 import Admin from './pages/Admin'
 import Login from './pages/Login'
+import PrivateRoute from './components/PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -30,7 +33,13 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <Admin />,
+    element: <PrivateRoute />,
+    children: [
+      {
+        path: '',
+        element: <Admin />,
+      },
+    ],
   },
   {
     path: '/login',
@@ -51,6 +60,19 @@ const queryClient = new QueryClient({
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
+      <ToastContainer
+        position={window.innerWidth <= 720 ? 'top-right' : 'bottom-right'}
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        limit={5}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="colored"
+      />
       <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>,

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import colors from './colors'
+import { toast } from 'react-toastify'
 
 export function useDimension(width: number): boolean {
   const [state, setState] = useState(false)
@@ -57,4 +58,32 @@ export function formatDate(isoDateString: string): string {
 
   // Retornar a data formatada
   return `${day}/${month}/${year}`
+}
+
+export function KickUserUnlogged(page: any): any {
+  const userToken = localStorage.getItem('userToken')
+
+  if (!userToken) {
+    toast.error('Usuario não logado!')
+  }
+
+  return page
+}
+
+export function isUserLogged(): boolean {
+  const userToken = localStorage.getItem('userToken')
+
+  if (!userToken) {
+    return false
+  } else {
+    return true
+  }
+}
+
+export function Logout(): void {
+  try {
+    localStorage.removeItem('userToken')
+  } catch (err) {
+    console.log(err)
+  }
 }
