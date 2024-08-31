@@ -54,7 +54,8 @@ const Login = () => {
             src={Logo}
             alt="logo_login"
             width={'50%'}
-            style={{ marginBottom: -50 }}
+            style={{ marginBottom: -50, cursor: 'pointer' }}
+            onClick={() => navigation('/')}
           />
           <Typography variant="h4" gutterBottom>
             Enter an account

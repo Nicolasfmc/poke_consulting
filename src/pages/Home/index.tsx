@@ -45,6 +45,8 @@ const Home = () => {
             alignItems: 'center',
 
             flexDirection: 'column',
+
+            fontSize: '1.5em',
           }}
         >
           <p
@@ -65,7 +67,12 @@ const Home = () => {
           >
             Master the art of Pokemon training
           </p>
-          <Button onClick={() => navigate('/pricing')}>I Want!</Button>
+          <Button
+            style={{ width: '15%', height: '50px', fontSize: '20px' }}
+            onClick={() => navigate('/pricing')}
+          >
+            Let&apos;s Catch &apos;em All!
+          </Button>
         </section>
         <main
           role="about_us & other"
@@ -87,7 +94,7 @@ const Home = () => {
           />
           <ImageTextComponent
             imageUrl={EvoBanner}
-            title="Heading"
+            title="Why choose us?"
             text={`Choosing our consultancy means gaining access to a team of Pokemon experts dedicated to your success.
             We have the best features compared to cost benefit in the entire market.
             With a proven track record of helping trainers achieve rapid improvements and a commitment to ongoing support,
@@ -101,7 +108,9 @@ const Home = () => {
             width: '110%',
             flexDirection: 'column',
             padding: '20px 0px 30px 80px',
-            marginLeft: '10%',
+            marginLeft: '5%',
+            fontSize: '1.5em',
+            textAlign: 'justify',
           }}
         >
           <h2>Benefits of Our Consultancy</h2>
@@ -117,7 +126,7 @@ const Home = () => {
               <p
                 style={{
                   color: colors.subText,
-                  width: '30%',
+                  width: '50%',
                 }}
               >
                 Receive advice and strategies tailored to your specific needs
@@ -131,7 +140,7 @@ const Home = () => {
               <p
                 style={{
                   color: colors.subText,
-                  width: '30%',
+                  width: '50%',
                 }}
               >
                 Our team consists of experienced trainers who deeply understand
@@ -145,7 +154,7 @@ const Home = () => {
               <p
                 style={{
                   color: colors.subText,
-                  width: '30%',
+                  width: '50%',
                 }}
               >
                 Improve your battle performance quickly and effectively. Our
@@ -159,7 +168,7 @@ const Home = () => {
               <p
                 style={{
                   color: colors.subText,
-                  width: '30%',
+                  width: '50%',
                 }}
               >
                 We offer continuous support to ensure you keep progressing.
@@ -201,12 +210,16 @@ const Home = () => {
             textAlign: 'center',
             color: 'white',
             textShadow: '0px 0px 8px black',
+            fontSize: '2em',
           }}
         >
           <h1>Let&apos;s Team Together</h1>
           <p>Check our pricing plans and start now your journey to the top</p>
-          <Button onClick={() => navigate('/pricing')}>
-            Let&apos;s Do It!
+          <Button
+            style={{ width: '20%', height: '50px', fontSize: '20px' }}
+            onClick={() => navigate('/pricing')}
+          >
+            Check Plans
           </Button>
         </div>
       </div>

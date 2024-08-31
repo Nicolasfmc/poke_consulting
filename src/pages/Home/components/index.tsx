@@ -34,6 +34,8 @@ const ImageTextComponent: React.FC<Props> = ({
     },
     textContainer: {
       width: '50%',
+      fontSize: '1.5em',
+      textAlign: 'justify',
     },
     title: {
       fontWeight: 'semibold',

@@ -69,13 +69,13 @@ const NavBar = () => {
         >
           Pricing
         </Button>
-        {/* <Button
+        <Button
           variant="text"
           style={{ color: colors.titleText }}
           onClick={() => navigation('/contact')}
         >
           Contact
-        </Button> */}
+        </Button>
         {isUserLogged() ? (
           <Button style={{ marginLeft: 5 }} onClick={() => handleLogout()}>
             Sign Out
